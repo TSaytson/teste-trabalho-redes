@@ -6,16 +6,18 @@ html, body {
     background-repeat: no-repeat;
     background-attachment: fixed;
   }
-  p1 {
+  p {
     color:brown; 
     font-family: 'Times New Roman'; 
     text-align: center;
     font-size: 1.5em;
+    border-style: double;
     }
   h1 {
     color:brown; 
     font-family: Verdana; 
     text-align: center;
+    border-bottom-style: solid;
     }
 /* define a fixed width for the entire menu */
 .navigation {
