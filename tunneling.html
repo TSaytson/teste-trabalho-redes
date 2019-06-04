@@ -1,0 +1,40 @@
+<html>
+  <meta charset="utf-8">
+  <title>Ataques DNS - Tunneling</title>
+<head> 
+    <link rel="stylesheet" type="text/css" href="index.css">
+<nav class="navigation">
+    <ul class="mainmenu">
+      <li><a href="index.html">In&iacute;cio</a></li>
+      <li><a href="bibliography.html">Bibliografia</a></li>
+      <li><a href="">T&oacute;picos</a>
+        <ul class="submenu">
+          <li><a href="hijacking.html">Hijacking</a></li>
+          <li><a href="">Flood attacks</a></li>
+          <li><a href="spoofing.html">Spoofing</a></li>
+          <li><a href="">Tunnelling</a></li>
+          <li><a href="">Cache Poisoning</a></li>
+        </ul>
+      </li>
+      <li><a href="http://linkedin.com/in/thiago-saytson-87130b188">Thiago Saytson</a></li>
+      <li><a href="">Alan Peterson</a></li>
+      <li><a href="">Tiago Borzino</a></li>
+    </ul>
+  </nav>
+  <body>
+      <h1>DNS Tunneling</h1>
+      <p><b>O ataque</b> <br><br>
+	  Uma das vulnerabilidades do DNS está em se aproveitar do DNS para fazer tunelamento. O tunelamento de DNS é um ataque que consiste em explorar o DNS para esconder dados em pedidos e respostas DNS. Esses dados que são escondidos no DNS e codificados, contêm desde senhas pessoais até informações que o atacante possa julgar úteis, além de o canal de tunelamento poder servir como uma forma de o atacante controlar servidores e aplicativos.<br>
+      No tunelamento, a máquina infectada com tunelamento faz uma requisição de procura de nome. Como esse nome não existe no servidor de DNS recursivo, a requisição é feita ao servidor autoritário que é o hospedeiro do DNS tunelado. As ferramentas presentes no servidor tunelado decodificam a informação presente no pedido e, depois de resolver a solicitação, criptografa a resposta, que é mandada de volta para o computador infectado. <br>
+	  Um fator que torna o perigo de um possível ataque de tunelamento de DNS maior é a disponibilidade para download na internet de ferramentas que possibilitam esse tipo de ataque, como Iodine, dns2tcp, DNScat2 e Metasploit. <br><br>
+	  <img src="tunneling.png" alt="Tunneling"><br>
+	  O tunelamento de DNS <br><br>
+	  <b>Método Proposto de Defesa </b><br><br>
+	  O método proposto pelos pesquisadores não teria a necessidade de normalizar os dados, que passariam para o mecanismo de detecção de ataque de forma direta, diferentemente de várias outras propostas, que se baseiam nessa padronização dos dados. A ideia deles é usar pacotes de bytes como aspecto característico enquanto eles são analisados para ver se é um ataque ou tráfego de dados normal. <br>
+	  Para isso, foi usada uma rede neural (Modelos computacionais que podem fazer machine learning). Essa rede neural é dividida entre duas principais partes, a parte que aprende a detectar os ataques e a parte da classificação. A parte da rede neural especializada em aprender realiza a sua função a partir da apresentação de dados, que são analisados e usados para o aprendizado, o que leva à uma classificação dos pacotes de uma forma mais precisa. O modelo de rede neural utilizado para construir a rede proposta é o "feed-forward", uma rede neural que não recebe um parecer do dado analisado por ela.	<br>
+      Após os pesquisadores ensinarem à rede como se comportar, eles analisaram os resultados de seus experimentos a partir de três aspectos: acurácia, precisão e recall, cujas taxas de sucesso foram 99,96%, 100%, 99,60%, respectivamente. Mostrando que o método proposto é eficaz no combate ao tunelamento de DNS.	  
+
+	  
+	  </p>
+    </body>
+</html>
