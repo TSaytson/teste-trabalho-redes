@@ -19,6 +19,7 @@ html, body {
     text-align: center;
     border-bottom-style: solid;
     }
+
 /* define a fixed width for the entire menu */
 .navigation {
   width: 250px;
@@ -31,7 +32,8 @@ html, body {
   margin: 0;
 }
 
-/* make ALL links (main and submenu) have padding and background color */
+/* make ALL links (main and submenu) have padding and background 
+color */
 .mainmenu a {
   display: block;
   background-color: #CCC;
@@ -58,7 +60,8 @@ html, body {
 
 /*
   we now overwrite the background-color for .submenu links only.
-  CSS reads down the page, so code at the bottom will overwrite the code at the top.
+  CSS reads down the page, so code at the bottom will overwrite
+  the code at the top.
 */
 
 .submenu a {
