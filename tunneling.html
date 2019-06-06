@@ -10,8 +10,9 @@
       <li><a href="">T&oacute;picos</a>
         <ul class="submenu">
           <li><a href="hijacking.html">Hijacking</a></li>
-          <li><a href="">Flood attacks</a></li>
+          <li><a href="flood-attack.html">Flood attacks</a></li>
           <li><a href="spoofing.html">Spoofing</a></li>
+          <li><a href="subdomain.html">Subdomain</a></li>
           <li><a href="cache-poisoning.html">Cache Poisoning</a></li>
         </ul>
       </li>
@@ -21,7 +22,7 @@
     </ul>
   </nav>
   <body>
-      <h1>DNS Tunneling</h1>
+      <h1>Tunneling</h1>
       <p><b>O ataque</b> <br><br>
 	  Uma das vulnerabilidades do DNS está em se aproveitar do DNS para fazer tunelamento. O tunelamento de DNS é um ataque que consiste em explorar o DNS para esconder dados em pedidos e respostas DNS. Esses dados que são escondidos no DNS e codificados, contêm desde senhas pessoais até informações que o atacante possa julgar úteis, além de o canal de tunelamento poder servir como uma forma de o atacante controlar servidores e aplicativos.<br>
       No tunelamento, a máquina infectada com tunelamento faz uma requisição de procura de nome. Como esse nome não existe no servidor de DNS recursivo, a requisição é feita ao servidor autoritário que é o hospedeiro do DNS tunelado. As ferramentas presentes no servidor tunelado decodificam a informação presente no pedido e, depois de resolver a solicitação, criptografa a resposta, que é mandada de volta para o computador infectado. <br>
