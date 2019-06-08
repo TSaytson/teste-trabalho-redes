@@ -24,6 +24,37 @@
   </nav>
   <body>
       <h1>Introdução</h1>
-      <p>Alan escrever aqui</p>
+      <p>DNS, acrônimo para Domain Name System, é o sistema responsável
+        pela tradução de nomes de domínio em endereços IP, que por sua
+        vez são interpretados pelas interfaces de rede. Na internet
+        um cliente web faz solicitações DNS para descobrir para qual
+        endereço IP devem ser enviados os datagramas. As requisições
+        e respostas DNS utilizam como protocolo de transporte o UDP
+        (User Datagram Protocol). <br> <br>
+        
+        Os servidores DNS possuem bancos de dados da forma
+        (type, name, value, TTL), onde type define o tipo de consulta
+        que será feita ao servidor, name corresponde ao domínio,
+        value ao respectivo endereço IP e TTL o tempo que o registro
+        será mantido no cache do servidor.(Kurose, 2016) Nenhum servidor possui
+        registros de todos os domínios na Internet, pois 
+        o sistema funciona de forma hierarquica e distribuída, de modo
+        que seja escalável nas infraestruturas de redes.<br>
+        <img src="./imagens/introduction02-dns-hierarchy.png" alt="hierarquia-dns" style="width:900px; height:450px"><br>
+        Figura 1 - Retirado de "Redes de Computadores: Uma abordagem 'top-down'" Kurose & Ross (2016)<br><br>
+        Na Figura 1 está representada a estrutura hierarquica do DNS.
+        Os servidores Root possuem registros dos servidores Top Domain,
+        estes, por sua vez, possuem registros dos servidores autoritativos
+        de domínios como .com, .br, .edu, .net, e etc.
+        As consultas aos registros dos servidores DNS podem ser feitas
+        de duas formas, iterativas, como representado na figura abaixo<br>
+        <img src="./imagens/introduction03-dns-iterativo.png" alt="dns-iterativo" style="width: 500px; height: 600px"><br>
+        Figura 2 - Retirado de "Redes de Computadores: Uma abordagem 'top-down'" Kurose & Ross (2016)<br><br>
+        Ou de forma recursiva.<br>
+        <img src="./imagens/introduction04-dns-recursivo.gif" alt="dns-recursivo" style="width:600x; height:600px;"><br>
+        Figura 3 - Disponível em: https://userpages.umbc.edu/~dgorin1/451/OSI7/dcomm/dnsrecurs1.gif<br><br>
+        O cabeçalho das requisições e respostas DNS tem o seguinte formato:
+
+      </p>
     </body>
 </html>
