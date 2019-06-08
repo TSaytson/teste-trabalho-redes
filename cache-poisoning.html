@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <meta charset="utf-8">
   <title>Ataques DNS - Cache Poisoning</title>
@@ -33,7 +34,7 @@
 	  Na figura 2, é possível observar como o envenenamento de cache do DNS funciona. O cliente faz a requisição ao servidor(1), que por não ter o IP do site desejado faz pedidos até descobrir em que servidor existe o IP para o site desejado (2,3,4,5). Nesse momento, ele faz um pedido para o servidor autoritário que contém o endereço do site desejado (6), mas ao invés de receber a resposta do servidor autoritário verdadeiro, o servidor autoritário do atacante responde à requisição, dando um endereço falso (7 vermelho). Esse endereço falsificado é, em seguida, encaminhado para o cliente que fez a requisição(8 vermelho). <br><br><br>
       Um ataque é considerado bem sucedido quando o servidor DNS aceita essa resposta falsificada recebida. Assim, caso alguém faça um pedido por um desses IPs específicos será redirecionado para o site de IP falso, que é feito com o intuito de parecer muito similar, quando não idêntico ao original, ao invés de ser redirecionado para o verdadeiro. Nesse site falso montado pelo atacante, podem ser coletadas informações que a vítima inserir, desde senhas até dados pessoais.<br><br><br>
 	  <img src="./imagens/cache-poisoning-exemplo.png" alt="exemplo-cache-poisoning"><br>
-	  Figura 1 - disponível em: https://exame.abril.com.br/tecnologia/site-falso-do-bb-e-quase-convincente-para-roubar-seus-dados/<br>
+	  Figura 1 - Disponível em: <a href="https://exame.abril.com.br/tecnologia/site-falso-do-bb-e-quase-convincente-para-roubar-seus-dados/">https://exame.abril.com.br/tecnologia/site-falso-do-bb-e-quase-convincente-para-roubar-seus-dados/</a><br>
 	  Na figura 1, podemos observar um site que, à primeira vista, pode ser confundido com o site verdadeiro do Banco do Brasil. Entretanto, quando analisado de forma cuidadosa, é possível perceber o uso de linguagem coloquial em "Ligue pra nóis", o que evidencia a falsidade da página.<br><br>
 	  Embora tenham sido propostos e desenvolvidos métodos contra o envenenamento do cache, eles não se provaram tão eficazes. Um desses métodos é o DNSSEC, que iria requerer uma mudança na arquitetura do DNS, o que torna essa proposta difícil de ser popularizada e, consequentemente, utilizada. Além disso, essa alternativa não previne completamente os ataques e não propõem métodos para restaurar o cache após o ataque.<br><br><br>
 	  

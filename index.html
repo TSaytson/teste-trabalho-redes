@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html>
   <meta charset="utf-8">
   <title>Ataques DNS</title>
-<head> 
+<head>
     <link rel="stylesheet" type="text/css" href="index.css">
 <nav class="navigation">
     <ul class="mainmenu">
@@ -39,22 +40,65 @@
         será mantido no cache do servidor.(Kurose, 2016) Nenhum servidor possui
         registros de todos os domínios na Internet, pois 
         o sistema funciona de forma hierarquica e distribuída, de modo
-        que seja escalável nas infraestruturas de redes.<br>
-        <img src="./imagens/introduction02-dns-hierarchy.png" alt="hierarquia-dns" style="width:900px; height:450px"><br>
+        que seja escalável nas infraestruturas de redes, além de 
+        possibilitar um funcionamento contínuo da rede mesmo que
+        alguns servidores DNS deixem de funcionar.<br>
+        <img src="./imagens/introduction02-dns-hierarchy.png" alt="hierarquia-dns" style="width:700px; height:350px"><br>
         Figura 1 - Retirado de "Redes de Computadores: Uma abordagem 'top-down'" Kurose & Ross (2016)<br><br>
         Na Figura 1 está representada a estrutura hierarquica do DNS.
-        Os servidores Root possuem registros dos servidores Top Domain,
-        estes, por sua vez, possuem registros dos servidores autoritativos
-        de domínios como .com, .br, .edu, .net, e etc.
+        Os servidores Root possuem registros dos servidores Top Domain Level
+        <a href="https://www.iana.org/domains/root/servers" target="_blank">
+        (Lista dos servidores raíz).
+        </a><br>
+        Os servidores TLD, por sua vez, possuem registros dos servidores autoritativos
+        de domínios .com,&nbsp;.br,&nbsp;.edu,&nbsp;.net,&nbsp;e&nbsp;etc.
+        <a href="https://www.iana.org/domains/root/db" target="_blank">
+        (Lista de servidores TLD).
+        </a><br>
+        Além destes, existem os servidores DNS locais, normalmente
+        pertencentes a uma ISP (Internet Service Provider). Estes, em geral,
+        fornecem endereços de outros servidores próximos.
         As consultas aos registros dos servidores DNS podem ser feitas
         de duas formas, iterativas, como representado na figura abaixo<br>
         <img src="./imagens/introduction03-dns-iterativo.png" alt="dns-iterativo" style="width: 500px; height: 600px"><br>
         Figura 2 - Retirado de "Redes de Computadores: Uma abordagem 'top-down'" Kurose & Ross (2016)<br><br>
         Ou de forma recursiva.<br>
-        <img src="./imagens/introduction04-dns-recursivo.gif" alt="dns-recursivo" style="width:600x; height:600px;"><br>
-        Figura 3 - Disponível em: https://userpages.umbc.edu/~dgorin1/451/OSI7/dcomm/dnsrecurs1.gif<br><br>
-        O cabeçalho das requisições e respostas DNS tem o seguinte formato:
-
+        <img src="./imagens/introduction04-dns-recursivo.gif" alt="dns-recursivo" style="height:450px;"><br>
+        Figura 3 - Disponível em: <a href="https://userpages.umbc.edu/~dgorin1/451/OSI7/dcomm/dnsrecurs1.gif">https://userpages.umbc.edu/~dgorin1/451/OSI7/dcomm/dnsrecurs1.gif</a><br><br>
+        O cabeçalho das requisições e respostas DNS tem o seguinte formato:<br>
+        <img src="./imagens/introduction05-dns-formato-mensagem.jpg" alt="formato-mensagem-dns" style="width:700px; height:550px;"><br>
+        A seção de cabeçalho é formada pelos primeiros 12 bytes. 
+        O campo "indetificação" é um número de 16 bits que identifica
+        a consulta. Esse número é copiado para a mensagem de resposta,
+        permitindo combinar respostas recebidas com consultas enviadas.
+        No campo de flags existem:
+        <dl>
+          <dt>Flag de Consulta</dt>
+            <dd>0 para consulta, 1 para resposta.</dd>
+          <dt>Flag de autoridade</dt>
+            <dd>1 para respostas de servidores autoritativos.</dd>
+          <dt>Flag de recursão</dt>
+            <dd>1 quando um cliente (hospedeiro ou servidor DNS)
+              deseja que um servidor DNS atue de forma recursiva
+              quando não possuir o registro.
+            </dd>
+            <dd>Igualmente, um campo de recursão disponível está
+              presente na resposta caso o servidor DNS possua 
+              suporte a tal procedimento.
+            </dd>
+          </dt>
+        </dl>
+        <p>
+        No cabeçalho, há também quatro campos de “tamanho”. 
+        Eles indicam o número de ocorrências dos quatro tipos de 
+        seção de dados que se seguem ao cabeçalho. 
+        A seção de pergunta contém informações sobre a consulta que 
+        está sendo feita. Essa seção inclui (1) um campo de nome que
+        contém o nome que está sendo consultado e (2) um campo de tipo
+        que indica o tipo da pergunta que está sendo feita sobre o nome
+         — por exemplo, um endereço de hospedeiro associado a um nome
+        (Type A) ou o servidor de correio para um nome (Type MX). 
+        
       </p>
     </body>
 </html>
