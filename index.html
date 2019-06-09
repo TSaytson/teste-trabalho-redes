@@ -27,11 +27,12 @@
       <h1>Introdução</h1>
       <p>DNS, acrônimo para Domain Name System, é o sistema responsável
         pela tradução de nomes de domínio em endereços IP, que por sua
-        vez são interpretados pelas interfaces de rede. Na internet
-        um cliente web faz solicitações DNS para descobrir para qual
-        endereço IP devem ser enviados os datagramas. As requisições
-        e respostas DNS utilizam como protocolo de transporte o UDP
-        (User Datagram Protocol). <br> <br>
+        vez são interpretados pelas interfaces de rede, por serem de
+        tamanhos fixos de 4 bytes, diferentemente dos nomes de domínio.
+        Na internet um cliente web faz solicitações DNS para descobrir 
+        para qual endereço IP devem ser enviados os datagramas.
+        As requisições e respostas DNS utilizam como protocolo de 
+        transporte o UDP (User Datagram Protocol). <br> <br>
         
         Os servidores DNS possuem bancos de dados da forma
         (type, name, value, TTL), onde type define o tipo de consulta
@@ -42,8 +43,8 @@
         o sistema funciona de forma hierarquica e distribuída, de modo
         que seja escalável nas infraestruturas de redes, além de 
         possibilitar um funcionamento contínuo da rede mesmo que
-        alguns servidores DNS deixem de funcionar.<br>
-        <img src="./imagens/introduction02-dns-hierarchy.png" alt="hierarquia-dns" style="width:700px; height:350px"><br>
+        alguns servidores DNS deixem de funcionar.<br><br>
+        <img src="./imagens/introduction01-dns-hierarchy.jpg" alt="hierarquia-dns" style="width:700px; height:300px"><br>
         Figura 1 - Retirado de "Redes de Computadores: Uma abordagem 'top-down'" Kurose & Ross (2016)<br><br>
         Na Figura 1 está representada a estrutura hierarquica do DNS.
         Os servidores Root possuem registros dos servidores Top Domain Level
@@ -59,14 +60,14 @@
         pertencentes a uma ISP (Internet Service Provider). Estes, em geral,
         fornecem endereços de outros servidores próximos.
         As consultas aos registros dos servidores DNS podem ser feitas
-        de duas formas, iterativas, como representado na figura abaixo<br>
+        de duas formas, iterativas, como representado na figura abaixo<br><br>
         <img src="./imagens/introduction03-dns-iterativo.png" alt="dns-iterativo" style="width: 500px; height: 600px"><br>
         Figura 2 - Retirado de "Redes de Computadores: Uma abordagem 'top-down'" Kurose & Ross (2016)<br><br>
         Ou de forma recursiva.<br>
         <img src="./imagens/introduction04-dns-recursivo.gif" alt="dns-recursivo" style="height:450px;"><br>
         Figura 3 - Disponível em: <a href="https://userpages.umbc.edu/~dgorin1/451/OSI7/dcomm/dnsrecurs1.gif">https://userpages.umbc.edu/~dgorin1/451/OSI7/dcomm/dnsrecurs1.gif</a><br><br>
-        O cabeçalho das requisições e respostas DNS tem o seguinte formato:<br>
-        <img src="./imagens/introduction05-dns-formato-mensagem.jpg" alt="formato-mensagem-dns" style="width:700px; height:550px;"><br>
+        O cabeçalho das requisições e respostas DNS tem o seguinte formato:<br><br>
+        <img src="./imagens/introduction05-dns-formato-mensagem.jpg" alt="formato-mensagem-dns" style="width:700px; height:550px;"><br><br>
         A seção de cabeçalho é formada pelos primeiros 12 bytes. 
         O campo "indetificação" é um número de 16 bits que identifica
         a consulta. Esse número é copiado para a mensagem de resposta,
@@ -89,16 +90,34 @@
           </dt>
         </dl>
         <p>
-        No cabeçalho, há também quatro campos de “tamanho”. 
-        Eles indicam o número de ocorrências dos quatro tipos de 
-        seção de dados que se seguem ao cabeçalho. 
+        No cabeçalho há também quatro campos que indicam o número 
+        de ocorrências dos quatro tipos de seção de dados seguintes.
         A seção de pergunta contém informações sobre a consulta que 
-        está sendo feita. Essa seção inclui (1) um campo de nome que
-        contém o nome que está sendo consultado e (2) um campo de tipo
-        que indica o tipo da pergunta que está sendo feita sobre o nome
-         — por exemplo, um endereço de hospedeiro associado a um nome
-        (Type A) ou o servidor de correio para um nome (Type MX). 
-        
+        está sendo feita. Essa seção inclui um campo de nome que
+        contém o nome que está sendo consultado e um campo de tipo
+        que indica o tipo da pergunta que está sendo feita. Por 
+        exemplo, um endereço IP associado a um nome de domínio (Type A)
+        ou um servidor de correio para um nome de domínio (Type MX).
+        A seção de resposta de um servidor DNS contém os registros 
+        de recursos para o nome que foi consultado originalmente. 
+        Em cada registro de recurso há o Type 
+        (por exemplo, A, NS, CSNAME e MX), o Value e o TTL. 
+        Uma resposta pode retornar vários RRs, já que um nome de 
+        hospedeiro pode ter diversos endereços IP, por exemplo, 
+        para servidores Web replicados.	A seção de autoridade contém 
+        registros de outros servidores autoritativos.	A seção adicional 
+        contém outros registros úteis. Por exemplo, o campo resposta 
+        em uma resposta a uma consulta MX conterá um registro de recurso 
+        que informa o nome canônico de um servidor de correio. 
+        A seção adicional conterá um registro Type A que fornece o 
+        endereço IP para o nome canônico do servidor de correio.
+        Para que os registros entrem em um banco de dados é preciso
+        registrar o nome de domínio com uma das entidades 
+        registradoras credenciadas pela
+        Internet&nbsp;Corporation&nbsp;for&nbsp;Assigned&nbsp;Names&nbsp;and&nbsp;Numbers (ICANN),
+        que verificarão a exclusividade do nome.
+        Uma lista completa dessas entidades está disponível em: 
+        <a href="http://www.internic.net." target="_blank">http://www.internic.net.</a><br>
       </p>
     </body>
 </html>
