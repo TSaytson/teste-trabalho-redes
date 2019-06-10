@@ -35,15 +35,15 @@
         transporte o UDP (User Datagram Protocol). <br> <br>
         
         Os servidores DNS possuem bancos de dados da forma
-        (type, name, value, TTL), onde type define o tipo de consulta
-        que será feita ao servidor, name corresponde ao domínio,
-        value ao respectivo endereço IP e TTL o tempo que o registro
-        será mantido no cache do servidor.(Kurose, 2016) Nenhum servidor possui
-        registros de todos os domínios na Internet, pois 
-        o sistema funciona de forma hierarquica e distribuída, de modo
-        que seja escalável nas infraestruturas de redes, além de 
-        possibilitar um funcionamento contínuo da rede mesmo que
-        alguns servidores DNS deixem de funcionar.<br><br>
+        (Type, Name, Value, TTL), conhecidos como registros de recursos (RRs).
+        Type define o tipo de consulta que será feita ao servidor, 
+        Name corresponde ao domínio, Value ao respectivo endereço IP 
+        e, TTL, o tempo que o registro será mantido no cache do servidor.(Kurose, 2016) 
+        Nenhum servidor possui registros de todos os domínios na 
+        Internet, pois o sistema funciona de forma hierarquica e 
+        distribuída, de modo que seja escalável nas infraestruturas 
+        de redes, além de possibilitar um funcionamento contínuo da 
+        rede mesmo que alguns servidores DNS deixem de funcionar.<br><br>
         <img src="./imagens/introduction01-dns-hierarchy.jpg" alt="hierarquia-dns" style="width:700px; height:300px"><br>
         Figura 1 - Retirado de "Redes de Computadores: Uma abordagem 'top-down'" Kurose & Ross (2016)<br><br>
         Na Figura 1 está representada a estrutura hierarquica do DNS.
@@ -92,27 +92,26 @@
         <p>
         No cabeçalho há também quatro campos que indicam o número 
         de ocorrências dos quatro tipos de seção de dados seguintes.
-        A seção de pergunta contém informações sobre a consulta que 
-        está sendo feita. Essa seção inclui um campo de nome que
-        contém o nome que está sendo consultado e um campo de tipo
-        que indica o tipo da pergunta que está sendo feita. Por 
-        exemplo, um endereço IP associado a um nome de domínio (Type A)
+        A seção de pergunta contém informações sobre a consulta, 
+        como um campo com o nome que está sendo consultado e um 
+        campo de tipo com o tipo da pergunta, por exemplo, um 
+        endereço IP associado a um nome de domínio (Type A)
         ou um servidor de correio para um nome de domínio (Type MX).
-        A seção de resposta de um servidor DNS contém os registros 
-        de recursos para o nome que foi consultado originalmente. 
-        Em cada registro de recurso há o Type 
-        (por exemplo, A, NS, CSNAME e MX), o Value e o TTL. 
+        Além destes, existem as consultas Type NS, que buscam endereços 
+        IP (Value) de servidores DNS autoritativos para o domínio 
+        contido em Name, e as consultas Type CNAME, afim de 
+        descobrir os nomes canônicos para apelidos de hospedeiros.
         Uma resposta pode retornar vários RRs, já que um nome de 
         hospedeiro pode ter diversos endereços IP, por exemplo, 
-        para servidores Web replicados.	A seção de autoridade contém 
-        registros de outros servidores autoritativos.	A seção adicional 
-        contém outros registros úteis. Por exemplo, o campo resposta 
-        em uma resposta a uma consulta MX conterá um registro de recurso 
-        que informa o nome canônico de um servidor de correio. 
+        para servidores Web replicados.(Kurose, 2016)	
+        A seção de autoridade contém registros de servidores autoritativos.
+        A seção adicional contém outros registros úteis, como um 
+        registro&nbsp;de&nbsp;recurso com o nome canônico de um
+        servidor de correio em uma consulta MX.
         A seção adicional conterá um registro Type A que fornece o 
         endereço IP para o nome canônico do servidor de correio.
-        Para que os registros entrem em um banco de dados é preciso
-        registrar o nome de domínio com uma das entidades 
+        Para que os registros entrem no banco de dados do DNS 
+        é preciso registrar o nome de domínio com uma das entidades 
         registradoras credenciadas pela
         Internet&nbsp;Corporation&nbsp;for&nbsp;Assigned&nbsp;Names&nbsp;and&nbsp;Numbers (ICANN),
         que verificarão a exclusividade do nome.
