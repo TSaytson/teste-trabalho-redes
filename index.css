@@ -19,12 +19,7 @@ html, body {
     text-align: center;
     border-bottom-style: solid;
     }
-  dl {
-    color:black;
-    font-family: 'Trebuchet MS';
-    font-size: 1.4em;
-    border-style: double;
-    }
+  
 
 /* define a fixed width for the entire menu */
 .navigation {
