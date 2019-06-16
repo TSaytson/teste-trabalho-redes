@@ -73,24 +73,19 @@
         O campo "indetificação" é um número de 16 bits que identifica
         a consulta. Esse número é copiado para a mensagem de resposta,
         permitindo combinar respostas recebidas com consultas enviadas.
-        No campo de flags existem:
-        <dl>
-          <dt>Flag de Consulta</dt>
-            <dd>0 para consulta, 1 para resposta.</dd>
-          <dt>Flag de autoridade</dt>
-            <dd>1 para respostas de servidores autoritativos.</dd>
-          <dt>Flag de recursão</dt>
-            <dd>1 quando um cliente (hospedeiro ou servidor DNS)
-              deseja que um servidor DNS atue de forma recursiva
-              quando não possuir o registro.
-            </dd>
-            <dd>Igualmente, um campo de recursão disponível está
-              presente na resposta caso o servidor DNS possua 
-              suporte a tal procedimento.
-            </dd>
-          </dt>
-        </dl>
-        <p>
+        No campo de flags existem:<br>
+        <strong>Flag de Consulta</strong><br>
+            0 para consulta, 1 para resposta.<br>
+          <strong>Flag de autoridade</strong><br>
+            1 para respostas de servidores autoritativos.<br>
+          <strong>Flag de recursão</strong><br>
+            1 quando um cliente (hospedeiro ou servidor DNS)
+            deseja que um servidor DNS atue de forma recursiva
+            quando não possuir o registro.<br>
+            Igualmente, um campo de recursão disponível está
+            presente na resposta caso o servidor DNS possua 
+            suporte a tal procedimento.<br>
+            <br>
         No cabeçalho há também quatro campos que indicam o número 
         de ocorrências dos quatro tipos de seção de dados seguintes.
         A seção de pergunta contém informações sobre a consulta, 
