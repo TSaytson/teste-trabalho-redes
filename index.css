@@ -78,7 +78,7 @@ color */
   we set it to max-height: 0, and hide the overflowed content.
 */
 .submenu {
-  overflow: hidden;
+  overflow: auto;
   max-height: 0;
   -webkit-transition: all 0.4s ease-out;
 }
