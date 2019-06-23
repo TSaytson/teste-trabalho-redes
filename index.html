@@ -27,26 +27,36 @@
   </nav>
       <h1>Introdução</h1>
       <p>DNS, acrônimo para Domain Name System, é o sistema responsável
-        pela tradução de nomes de domínio em endereços IP, que por sua
-        vez são interpretados pelas interfaces de rede, por serem de
-        tamanhos fixos de 4 bytes, diferentemente dos nomes de domínio.
+        pela tradução de nomes de domínio em endereços IP, que são
+        interpretados pelas interfaces de rede, por serem de tamanho 
+        fixo (4 bytes), diferentemente dos nomes de domínio.
+        A integridade e a disponibilidade do DNS são essenciais para 
+        o funcionamento e para a segurança da Internet.
+        Como o DNS é vital para uma vasta gama de aplicações, 
+        desde um roteamento seguro à distribuição de certificados, 
+        ataques a essa estrutura podem ser lucrativos para quem os pratica.
         Na internet um cliente web faz solicitações DNS para descobrir 
         para qual endereço IP devem ser enviados os datagramas.
-        As requisições e respostas DNS utilizam como protocolo de 
-        transporte o UDP (User Datagram Protocol). <br> <br>
+        O DNS pertence à camada de aplicação e suas requisições e 
+        respostas utilizam UDP (User Datagram Protocol) como 
+        protocolo de transporte. <br> <br>
         
         Os servidores DNS possuem bancos de dados da forma
-        (Type, Name, Value, TTL), conhecidos como registros de recursos (RRs).
+        (Type, Name, Value, TTL), conhecidos como registros 
+        de recursos (RRs).
         Type define o tipo de consulta que será feita ao servidor, 
-        Name corresponde ao domínio, Value ao respectivo endereço IP 
-        e, TTL, o tempo que o registro será mantido no cache do servidor.(Kurose, 2016) 
+        Name corresponde ao domínio, <i>Value</i> ao respectivo 
+        endereço IP e, TTL, o tempo que o registro será mantido no 
+        cache do servidor. (Kurose, 2016) 
         Nenhum servidor possui registros de todos os domínios na 
         Internet, pois o sistema funciona de forma hierarquica e 
         distribuída, de modo que seja escalável nas infraestruturas 
         de redes, além de possibilitar um funcionamento contínuo da 
-        rede mesmo que alguns servidores DNS deixem de funcionar.<br><br>
+        rede mesmo que alguns servidores DNS deixem de funcionar.<br>
+        <br>
         <img src="./imagens/introduction01-dns-hierarchy.jpg" alt="hierarquia-dns" style="width:700px; height:300px"><br>
-        Figura 1 - Retirado de "Redes de Computadores: Uma abordagem 'top-down'" Kurose & Ross (2016)<br><br>
+        Figura 1 - Retirado de "Redes de Computadores: Uma abordagem 'top-down'" Kurose & Ross (2016)<br>
+        <br>
         Na Figura 1 está representada a estrutura hierarquica do DNS.
         Os servidores Root possuem registros dos servidores Top Domain Level
         <a href="https://www.iana.org/domains/root/servers" target="_blank">
@@ -61,14 +71,19 @@
         pertencentes a uma ISP (Internet Service Provider). Estes, em geral,
         fornecem endereços de outros servidores próximos.
         As consultas aos registros dos servidores DNS podem ser feitas
-        de duas formas, iterativas, como representado na figura abaixo<br><br>
-        <img src="./imagens/introduction03-dns-iterativo.png" alt="dns-iterativo" style="width: 500px; height: 600px"><br>
-        Figura 2 - Retirado de "Redes de Computadores: Uma abordagem 'top-down'" Kurose & Ross (2016)<br><br>
+        de duas formas, iterativas, como representado na figura abaixo<br>
+        <br>
+        <img src="./imagens/introduction03-dns-iterativo.jpg" alt="dns-iterativo" style="width: 500px; height: 600px"><br>
+        Figura 2 - Retirado de "Redes de Computadores: Uma abordagem 'top-down'" Kurose & Ross (2016)<br>
+        <br>
         Ou de forma recursiva.<br>
         <img src="./imagens/introduction04-dns-recursivo.gif" alt="dns-recursivo" style="height:450px;"><br>
-        Figura 3 - Disponível em: <a href="https://userpages.umbc.edu/~dgorin1/451/OSI7/dcomm/dnsrecurs1.gif">https://userpages.umbc.edu/~dgorin1/451/OSI7/dcomm/dnsrecurs1.gif</a><br><br>
-        O cabeçalho das requisições e respostas DNS tem o seguinte formato:<br><br>
-        <img src="./imagens/introduction05-dns-formato-mensagem.jpg" alt="formato-mensagem-dns" style="width:700px; height:550px;"><br><br>
+        Figura 3 - Disponível em: <a href="https://userpages.umbc.edu/~dgorin1/451/OSI7/dcomm/dnsrecurs1.gif">https://userpages.umbc.edu/</a><br>
+        <br>
+        O cabeçalho das requisições e respostas DNS tem o seguinte formato:<br>
+        <br>
+        <img src="./imagens/introduction05-dns-formato-mensagem.jpg" alt="formato-mensagem-dns" style="width:900px; height:700px;"><br>
+        <br>
         A seção de cabeçalho é formada pelos primeiros 12 bytes. 
         O campo "indetificação" é um número de 16 bits que identifica
         a consulta. Esse número é copiado para a mensagem de resposta,
@@ -76,16 +91,16 @@
         No campo de flags existem:<br>
         <strong>Flag de Consulta</strong><br>
             0 para consulta, 1 para resposta.<br>
-          <strong>Flag de autoridade</strong><br>
+        <strong>Flag de autoridade</strong><br>
             1 para respostas de servidores autoritativos.<br>
-          <strong>Flag de recursão</strong><br>
+        <strong>Flag de recursão</strong><br>
             1 quando um cliente (hospedeiro ou servidor DNS)
             deseja que um servidor DNS atue de forma recursiva
             quando não possuir o registro.<br>
             Igualmente, um campo de recursão disponível está
             presente na resposta caso o servidor DNS possua 
             suporte a tal procedimento.<br>
-            <br>
+        <br>
         No cabeçalho há também quatro campos que indicam o número 
         de ocorrências dos quatro tipos de seção de dados seguintes.
         A seção de pergunta contém informações sobre a consulta, 

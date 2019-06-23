@@ -26,27 +26,79 @@
   </nav>
     <h1>Cache Poisoning</h1>
     <p>
-	  <b>O Ataque</b> <br> <br>
-	  O envenenamento do cache do servidor DNS é um ataque que visa a mudança de URL (Localizador uniforme de recursos) Web, prejudicar alguém economicamente e/ou vazar dados, informações pessoais e senhas. <br>
-	  O processo de envenenamento do cache ocorre durante o mapeamento DNS. Para fazer o envenenamento, o atacante faz uma requisição ao servidor DNS para saber o endereço IP de um site específico. Se o servidor local não tiver o endereço em seu cache, vai mandar o pedido para um servidor autoritário. Nesse ponto, o  atacante resolve o pedido do servidor DNS através de um servidor autoritário falso implantado por ele, fornecendo o endereço IP do site desejado e, além do IP do site desejado, também envia endereços IP falsos de outros sites.<br>
-	  <img src="./imagens/cache-poisoning.png" alt="Cache Poisoning"> <br>
+    <b>O Ataque</b> <br> 
+    <br>
+    O envenenamento do cache do servidor DNS é um ataque que visa 
+    a mudança de URL (Localizador uniforme de recursos) Web, 
+    prejudicar alguém economicamente e/ou vazar dados, 
+    informações pessoais e senhas. <br>
+    O processo de envenenamento do cache ocorre durante o 
+    mapeamento DNS. Para fazer o envenenamento, o atacante faz 
+    uma requisição ao servidor DNS para saber o endereço IP de 
+    um site específico. Se o servidor local não tiver o endereço 
+    em seu cache, vai mandar o pedido para um servidor autoritário. 
+    Nesse ponto, o atacante resolve o pedido do servidor DNS 
+    através de um servidor autoritário falso implantado por ele, 
+    fornecendo o endereço IP do site desejado e, além do IP do 
+    site desejado, também envia endereços IP falsos de outros sites.<br>
+    <br>
+    <img src="./imagens/cache-poisoning.png" alt="Cache Poisoning" style="height:500px; width:800px"> <br>
 	  Figura 2 - Cache Poisoning<br>
-	  Fonte: DESIGN AND IMPLEMENTATION OF AN SDN-ENABLED DNS SECURITY FRAMEWORK<br>
-	  Na figura 2, é possível observar como o envenenamento de cache do DNS funciona. O cliente faz a requisição ao servidor(1), que por não ter o IP do site desejado faz pedidos até descobrir em que servidor existe o IP para o site desejado (2,3,4,5). Nesse momento, ele faz um pedido para o servidor autoritário que contém o endereço do site desejado (6), mas ao invés de receber a resposta do servidor autoritário verdadeiro, o servidor autoritário do atacante responde à requisição, dando um endereço falso (7 vermelho). Esse endereço falsificado é, em seguida, encaminhado para o cliente que fez a requisição(8 vermelho). <br><br><br>
-      Um ataque é considerado bem sucedido quando o servidor DNS aceita essa resposta falsificada recebida. Assim, caso alguém faça um pedido por um desses IPs específicos será redirecionado para o site de IP falso, que é feito com o intuito de parecer muito similar, quando não idêntico ao original, ao invés de ser redirecionado para o verdadeiro. Nesse site falso montado pelo atacante, podem ser coletadas informações que a vítima inserir, desde senhas até dados pessoais.<br><br><br>
+    Retirado de: "DESIGN AND IMPLEMENTATION OF AN SDN-ENABLED DNS SECURITY FRAMEWORK"<br>
+    <br>
+    Na figura 2, é possível observar como o envenenamento de cache 
+    do DNS funciona. O cliente faz a requisição ao servidor(1), 
+    que por não ter o IP do site desejado faz pedidos até descobrir 
+    em que servidor existe o IP para o site desejado (2,3,4,5). 
+    Nesse momento, ele faz um pedido para o servidor autoritativo
+    que contém o endereço do site desejado (6), mas ao invés de 
+    receber a resposta do servidor autoritário verdadeiro, 
+    o servidor autoritário do atacante responde à requisição, 
+    dando um endereço falso (7 vermelho). Esse endereço falsificado 
+    é, em seguida, encaminhado para o cliente que fez a requisição
+     (8 vermelho). <br>
+     <br>
+    Um ataque é considerado bem sucedido quando o servidor DNS 
+    aceita essa resposta falsificada recebida. Assim, caso 
+    alguém faça um pedido por um desses domínios específicos 
+    será redirecionado para o site de IP falso, que é feito com o 
+    intuito de parecer muito similar, quando não idêntico ao 
+    original, em vez de ser redirecionado para o verdadeiro. 
+    Nesse site falso montado pelo atacante, podem ser coletadas 
+    informações que a vítima inserir, desde senhas até 
+    dados pessoais.<br>
+    <br>
 	  <img src="./imagens/cache-poisoning-exemplo.png" alt="exemplo-cache-poisoning"><br>
-	  Figura 1 - Disponível em: <a href="https://exame.abril.com.br/tecnologia/site-falso-do-bb-e-quase-convincente-para-roubar-seus-dados/">https://exame.abril.com.br/tecnologia/site-falso-do-bb-e-quase-convincente-para-roubar-seus-dados/</a><br>
-	  Na figura 1, podemos observar um site que, à primeira vista, pode ser confundido com o site verdadeiro do Banco do Brasil. Entretanto, quando analisado de forma cuidadosa, é possível perceber o uso de linguagem coloquial em "Ligue pra nóis", o que evidencia a falsidade da página.<br><br>
-	  Embora tenham sido propostos e desenvolvidos métodos contra o envenenamento do cache, eles não se provaram tão eficazes. Um desses métodos é o DNSSEC, que iria requerer uma mudança na arquitetura do DNS, o que torna essa proposta difícil de ser popularizada e, consequentemente, utilizada. Além disso, essa alternativa não previne completamente os ataques e não propõem métodos para restaurar o cache após o ataque.<br><br><br>
-	  
-	  
-	  
-	  
-	  <b> Formas de mitigar o dano causado </b> <br> <br>
-	  Uma das propostas para mitigar o impacto causado pelo envenenamento de cache do servidor DNS seria recuperar parte do cache do servidor. <br>
-	  Como os servidores DNS conservam as respostas falsas de IP enviadas pelo atacante, o cache do servidor seria primeiramente limpado. Após o cache ser esvaziado, uma lista contendo resoluções de nomes de sites frequentemente visitados (como Google, Facebook e Youtube) será carregada no cache do servidor DNS, sem que exista a necessidade de um pedido ser feito para esse site específico. <br><br><br>
-	  
-	  Outra proposta seria agir para prevenir o ataque: <br> <br>
+	  Figura 1 - Disponível em: <a href="https://exame.abril.com.br/tecnologia/site-falso-do-bb-e-quase-convincente-para-roubar-seus-dados/">https://exame.abril.com.br/tecnologia/</a><br>
+    Na figura 1, podemos observar um site que, à primeira vista, 
+    pode ser confundido com o site verdadeiro do Banco do Brasil. 
+    Entretanto, quando analisado de forma cuidadosa, é possível 
+    perceber o uso de linguagem coloquial em "Ligue pra nóis", 
+    o que evidencia a falsificação da página.<br><br>
+    Embora tenham sido propostos e desenvolvidos métodos 
+    contra o envenenamento do cache, eles não se provaram tão 
+    eficazes. Um desses métodos é o DNSSEC, que iria requerer 
+    uma mudança na arquitetura do DNS, o que torna essa proposta 
+    difícil de ser popularizada e, consequentemente, utilizada. 
+    Além disso, essa alternativa não previne completamente os 
+    ataques e não propõem métodos para restaurar o cache após o 
+    ataque.<br>
+    <br>
+    <b> Formas de mitigar o ataque </b> <br> 
+    <br>
+    Uma das propostas para mitigar o impacto causado pelo 
+    envenenamento de cache do servidor DNS seria recuperar parte 
+    do cache do servidor. <br>
+    Como os servidores DNS conservam as respostas falsas de IP 
+    enviadas pelo atacante, o cache do servidor seria primeiramente 
+    limpo. Após o cache ser esvaziado, uma lista contendo 
+    resoluções de nomes de sites frequentemente visitados 
+    (como Google, Facebook e Youtube) será carregada no cache do 
+    servidor DNS, sem que exista a necessidade de um pedido ser 
+    feito para esse site específico. <br>
+    <br>
+    Outra proposta seria agir para prevenir o ataque: <br> 
+    <br>
 	  Uma proposta para prevenir ataques de envenenamento de cache é uma resposta do pedido DNS vinda de vários servidores DNS, não de apenas um único. Esse método, ao qual os pesquisadores atribuíram o nome de Multi-DNS(MDNS),  além de aumentar a dificuldade de sucesso no ataque, irá aumentar também os custos para realizá-lo , pois teria que comprometer diversos servidores ao mesmo tempo com a mesma resposta. <br>
 	  Para essa alternativa, é proposto que sejam utilizados N servidores DNS (N ≥ 3), que tenham diferentes softwares de DNS e diferentes sistemas operacionais. Embora eles tenham diferenças, eles precisarão gerar a mesma resposta para um mesmo pedido DNS. <br>
 	  Com o intuito de escolher os servidores a serem utilizados, o MDNS terá três módulos virtuais de funções: o agendador, o que toma as decisões e o purificador. <br>

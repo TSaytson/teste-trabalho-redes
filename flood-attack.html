@@ -31,6 +31,7 @@
       e, consequemente, que o serviço fique indisponível.
       Como exemplo podemos citar o ataque realizado em 2016 aos 
       servidores da Dyn.<br>
+      <img src="imagens/flood-attack-ddos-attack-diagrama.png" alt="Diagrama ataque DDoS" style="height:600px; width:900px"><br>
       Dyn, Inc. é uma companhia que gerencia a performance da rede 
       e aplicações web seguras que oferece produtos para monitorar, 
       controlar e otimizar infraestruturas online, além dos 
@@ -49,16 +50,17 @@
       botnets de, por exemplo, malwares como o Mirai, que se propaga
       através de outros dispositivos IoT e foi um dos responsáveis
       pelo ataque citado à rede Dyn.<br>
-      Mais sobre Mirai em: <a href="https://www.kaspersky.com.br/blog/mirai-enterprise/11616/" target="_blank">https://www.kaspersky.com.br/blog/mirai-enterprise/11616/</a><br><br>
-
-      <b>Formas de mitigar o ataque</b><br><br>
+      Mais sobre Mirai em: <a href="https://www.kaspersky.com.br/blog/mirai-enterprise/11616/" target="_blank">https://www.kaspersky.com.br/</a><br>
+      <br>
+      <b>Formas de mitigar o ataque</b><br>
+      <br>
       Uma proposta para mitigar um flood attack é colocar n
       servidores DNS de forma circular/hierarquica/backup.
       Por exemplo, na topologia circular o primeiro fornece a
       resposta, depois o segundo e assim por diante, como na
       figura abaixo.<br><br>
-      <img src="imagens/flood-attack-circular-diagrama.png" alt="diagrama de dns circular" style="height:300px; width:750px">
-      <br><br>
+      <img src="imagens/flood-attack-circular-diagrama.png" alt="diagrama de dns circular" style="height:300px; width:750px"><br>
+      <br>
       O tempo ou o tráfego para cada provedor pode ser balanceado
       de forma desigual dependendo de cada caso. 
       Então, se há n servidores diferentes para resolução de domínios
@@ -70,7 +72,6 @@
       aos 13 servidores raíz em 31 de Outubro de 2002 com mensagens
       ping enviadas por botnet. (Kurose, 2013)
       
-
     </p>
   </body>
 </html>
