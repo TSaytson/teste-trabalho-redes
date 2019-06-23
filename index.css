@@ -4,7 +4,7 @@ html, body {
     background-image: url(./imagens/dns-background02.jpg);
     background-position: top;
     background-repeat: no-repeat;
-    background-size: 520px;
+    background-size: 600px;
   }
   p {
     color:black;
@@ -56,7 +56,7 @@ color */
 
 .mainmenu li:hover .submenu {
   display: block;
-  max-height: 250px;
+  max-height: 270px;
 }
 
 /*
